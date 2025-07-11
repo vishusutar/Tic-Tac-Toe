@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tic Tac Toe - Computer</title>
+	<link rel="stylesheet" href="./css/game.css">
+	<meta name="description" content="Play the classic Tic Tac Toe game with friends or challenge a smart computer opponent! Choose between 2-player mode or face a medium-level AI. Fun, fast, and perfect for all ages. Test your strategy and win the grid!">
+</head>
+<body class="w-screen min-h-screen flex flex-col gap-9 justify-center items-center bg-[linear-gradient(140deg,#ff00cc,#3333ff,#00a3d9,#ff00cc)] animate-holo transition-colors duration-300">
+	<div class="max-w-md w-full flex flex-col justify-center items-center">
+		<div class="w-full aspect-square rounded-xl border-white/20 border bg-white/10  transition duration-300 backdrop-blur-lg grid grid-cols-3 grid-rows-3 p-4 gap-3">
+			<div class="cell rounded-xl border-white/20 bg-white/10 border text-white font-bold text-3xl md:text-5xl  flex justify-center items-center"></div>
+			<div class="cell rounded-xl border-white/20 bg-white/10 border text-white font-bold text-3xl md:text-5xl  flex justify-center items-center"></div>
+			<div class="cell rounded-xl border-white/20 bg-white/10 border text-white font-bold text-3xl md:text-5xl  flex justify-center items-center"></div>
+			<div class="cell rounded-xl border-white/20 bg-white/10 border text-white font-bold text-3xl md:text-5xl  flex justify-center items-center"></div>
+			<div class="cell rounded-xl border-white/20 bg-white/10 border text-white font-bold text-3xl md:text-5xl  flex justify-center items-center"></div>
+			<div class="cell rounded-xl border-white/20 bg-white/10 border text-white font-bold text-3xl md:text-5xl  flex justify-center items-center"></div>
+			<div class="cell rounded-xl border-white/20 bg-white/10 border text-white font-bold text-3xl md:text-5xl  flex justify-center items-center"></div>
+			<div class="cell rounded-xl border-white/20 bg-white/10 border text-white font-bold text-3xl md:text-5xl  flex justify-center items-center"></div>
+			<div class="cell rounded-xl border-white/20 bg-white/10 border text-white font-bold text-3xl md:text-5xl  flex justify-center items-center"></div>
+		</div>
+	</div>
+  <p id="status" class="text-center text-white">Your's turn</p>
+	<script>
+		const cells = Array.from(document.querySelectorAll(".cell"));
+		const statusText = document.getElementById('status');
+		const getEmpty = () => cellArray.map((v, i) => (v === "") ? i : null).filter(i => i !== null);
+		const winningCombos = [
+			[0,1,2], [3,4,5], [6,7,8],
+			[0,3,6], [1,4,7], [2,5,8],
+			[0,4,8], [2,4,6] 
+		];
+		let cellArray = ['','','','','','','','',''];
+		let gameStarted = true;
+		
+		function checkWinner(){
+			for(const combo of winningCombos){
+				if(cellArray[combo[0]] == 'X' && cellArray[combo[1]] == 'X' && cellArray[combo[2]] == 'X'){
+					statusText.textContent = 'You Win! 🥳 Restarting in 3s';
+					gameStarted = false;
+					restart()
+					break;
+				}
+				else if(cellArray[combo[0]] == 'O' && cellArray[combo[1]] == 'O' && cellArray[combo[2]] == 'O'){
+					statusText.textContent = 'Computer Win! 🖥 Restarting in 3s';
+					gameStarted = false;
+					restart()
+					break;
+				}
+				else if(getEmpty().length == 0){
+				  statusText.textContent = "Game Draw! Restarting in 3s";
+					gameStarted = false;
+				  restart()
+				}
+			}
+		}
+		
+		function restart(){
+		  setTimeout(function() {
+  		  cellArray = ['','','','','','','','',''];
+				gameStarted = true;
+				statusText.textContent = "Your\'s turn";
+  		  for(const cell of cells){
+  		    cell.textContent = "";
+  		  }
+		  }, 3000);
+		}
+		function computerPlay(){
+			for (const combo of winningCombos) {
+					const [a, b, c] = combo;
+					const line = [cellArray[a], cellArray[b], cellArray[c]];
+					if (line.filter(x => x === 'O').length === 2 && line.includes("")) {
+						return combo[line.indexOf("")];
+					}
+				}
+
+				// Try to block player
+				for (const combo of winningCombos) {
+					const [a, b, c] = combo;
+					const line = [cellArray[a], cellArray[b], cellArray[c]];
+					if (line.filter(x => x === 'X').length === 2 && line.includes("")) {
+						return combo[line.indexOf("")];
+					}
+				}
+
+				// Else random
+				const empty = getEmpty();
+				return empty[Math.floor(Math.random() * empty.length)];
+		}
+		
+		function onCellClick(cellIndex){
+			if(cellArray[cellIndex] === '' && gameStarted){
+				cellArray[cellIndex] = 'X';
+				cells[cellIndex].textContent = 'X';
+				statusText.textContent = "Computer's turn"
+				
+				let computerChoice = computerPlay();
+				
+				if(computerChoice != undefined){
+					cellArray[computerChoice] = 'O';
+					cells[computerChoice].textContent = 'O';
+					statusText.textContent = "Your's turn";
+				}
+				
+				checkWinner()
+			}
+		}
+		
+		cells.forEach((cell,cellIndex)=>{
+			cell.addEventListener("click",() => onCellClick(cellIndex))
+		});
+	</script>
+</body>
+</html>
