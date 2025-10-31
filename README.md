@@ -1,51 +1,107 @@
-# Tic Tac Toe
+# Tic-Tac-Toe
 
-A classic Tic Tac Toe game built using **HTML**, **TailwindCSS**, and **JavaScript**. Play against a friend or challenge yourself against the computer!
+A simple, responsive, and interactive **Tic-Tac-Toe** game built with **HTML, CSS, and JavaScript**. Play against a friend (or yourself) in this classic two-player game. The game features a clean UI, turn tracking, win detection, and a reset option.
 
-## Features
-
-- **Two Player Mode:** Play with a friend on the same device.
-- **Computer Mode (AI):** Play solo against the computer with basic AI logic.
-- **Responsive Design:** Clean, modern UI powered by TailwindCSS.
-- **Simple and Fast:** No dependencies or setup required—just open and play!
-
-## Demo
-
-> _Want to try it out instantly?_  
-> [Live Demo on GitHub Pages](https://vishusutar.github.io/Tic-Tac-Toe/)  
-> *(Enable GitHub Pages for this repository to activate the link!)*
-
-## Getting Started
-
-1. **Clone or Download the Repository:**
-    ```sh
-    git clone https://github.com/vishusutar/Tic-Tac-Toe.git
-    ```
-2. **Open the Game:**
-    - Double-click `index.html` or open it in your web browser.
-
-## How to Play
-
-- **Two Player:** Click cells to take turns as X and O.
-- **Computer Mode:** Select "Play vs Computer" to challenge the AI!
-- The game announces the winner or a draw at the end.
-
-## Tech Stack
-
-- **HTML** – Structure & layout
-- **TailwindCSS** – Styling & responsiveness
-- **JavaScript** – Game logic & AI
-
-## License
-
-This project is open source and free to use.  
-Feel free to modify or contribute! *(Add a LICENSE file for specifics.)*
-
-## Contributing
-
-Contributions, feedback, and suggestions are welcome!  
-Feel free to open an issue or pull request.
+Live Demo: [https://vishusutar.github.io/Tic-Tac-Toe/](https://vishusutar.github.io/Tic-Tac-Toe/)
 
 ---
 
-Made with ❤️ by [vishusutar](https://github.com/vishusutar)
+## Features
+
+- **Two-Player Mode** (X vs O)
+- **Visual Turn Indicator**
+- **Win Detection** (Row, Column, Diagonal)
+- **Draw Detection**
+- **Responsive Design** (Works on mobile and desktop)
+- **Reset Game Anytime**
+- **Minimalist & Modern UI**
+
+---
+
+## Technologies Used
+
+- **HTML5**
+- **CSS3** (Flexbox, Custom Styling)
+- **Vanilla JavaScript** (Game Logic)
+
+---
+
+## How to Play
+
+1. Player **X** starts first.
+2. Click on any empty cell to place your mark.
+3. Players alternate turns.
+4. The first to get **3 marks in a row** (horizontally, vertically, or diagonally) **wins**.
+5. If all cells are filled and no one wins, it's a **draw**.
+6. Click **"Reset Game"** to play again.
+
+---
+
+## Project Structure
+
+```
+Tic-Tac-Toe/
+├── index.html
+├── style.css
+├── script.js
+└── README.md
+```
+
+---
+
+## Local Development
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/vishusutar/Tic-Tac-Toe.git
+   ```
+
+2. Navigate to the project folder:
+   ```bash
+   cd Tic-Tac-Toe
+   ```
+
+3. Open `index.html` in your browser:
+   ```bash
+   open index.html
+   ```
+
+No build tools or server required!
+
+---
+
+## Screenshots
+
+![Tic-Tac-Toe Gameplay](screenshot.png)  
+*Game in progress with X to move*
+
+---
+
+## Future Enhancements
+
+- [ ] Add AI opponent (Easy/Medium/Hard modes)
+- [ ] Score tracking
+- [ ] Sound effects
+- [ ] Dark mode toggle
+- [ ] Animations on win
+
+---
+
+## Contributing
+
+Contributions are welcome! Feel free to:
+
+- Open an [issue](https://github.com/vishusutar/Tic-Tac-Toe/issues)
+- Submit a [pull request](https://github.com/vishusutar/Tic-Tac-Toe/pulls)
+
+---
+
+## License
+
+This project is open-source and available under the [MIT License](LICENSE).
+
+---
+
+**Made with ❤️ by [Vishu Sutar](https://github.com/vishusutar)**
+
+---
